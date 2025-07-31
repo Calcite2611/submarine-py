@@ -25,7 +25,7 @@ def report_attacked(attacked):
     """
     msg = f' attacked {attacked["position"]}'
     if "hit" in attacked:
-        msg += " hit " + attacked["hit"]
+        msg += " hit " + str(attacked["hit"]) # str()で囲んで安全にする
     if "near" in attacked:
         msg += " near " + str(attacked["near"])
     print(msg)
@@ -45,10 +45,9 @@ class OriginalPlayer(Player):
     def __init__(self):
         super().__init__()
         self.rng = random.Random(42 or None)
-        self.enemy_w = None # 判明している敵のwの位置
-        self.enemy_c = None # 判明している敵のcの位置
-        self.enemy_s = None # 判明している敵のsの位置
-        # 予測マップの初期化はinitializeメソッドで行う
+        self.enemy_w = None
+        self.enemy_c = None
+        self.enemy_s = None
         self.w_pos_pred = None
         self.c_pos_pred = None
         self.s_pos_pred = None
@@ -56,18 +55,17 @@ class OriginalPlayer(Player):
 
     def initialize(self, field):
         super().initialize(field)
-        # フィールドが設定された後に予測マップを初期化
-        # ### 修正点 ### 全てのマスが等しい確率を持つように1で初期化
-        self.w_pos_pred = np.ones((self.field.width, self.field.height))
-        self.c_pos_pred = np.ones((self.field.width, self.field.height))
-        self.s_pos_pred = np.ones((self.field.width, self.field.height))
+        # 予測マップを0（未確定）で初期化
+        self.w_pos_pred = np.zeros((self.field.width, self.field.height))
+        self.c_pos_pred = np.zeros((self.field.width, self.field.height))
+        self.s_pos_pred = np.zeros((self.field.width, self.field.height))
         self.entire_map = np.zeros((self.field.width, self.field.height))
 
     def name(self):
         return 'original-player'
     
     def place_ship(self):
-        distance = int(min(self.field.height, self.field.width) // 2)
+        distance = 2
         placed_positions = set()
         ship_types = ['w', 'c', 's']
         max_attempts = 500
@@ -79,119 +77,120 @@ class OriginalPlayer(Player):
                 row = self.rng.randint(0, self.field.height - 1)
                 col = self.rng.randint(0, self.field.width - 1)
                 position = [col, row]
-
                 if tuple(position) not in placed_positions:
                     is_isolated = True
                     for placed_pos in placed_positions:
                         if abs(position[1] - placed_pos[1]) <= distance and abs(position[0] - placed_pos[0]) <= distance:
                             is_isolated = False
                             break
-                    
                     if is_isolated:
                         placed_positions.add(tuple(position))
                         placed = True
-                        logging.info(f"Placed {ship_type} at {position}")
             if not placed:
-                logging.warning(f"Failed to place {ship_type} after {max_attempts} attempts. Trying to place in a random way.")
                 for r in range(self.field.height):
                     for c in range(self.field.width):
                         if (c, r) not in placed_positions:
                             placed_positions.add((c, r))
-                            logging.info(f"Placed {ship_type} at {[c, r]}")
                             placed = True
                             break
                     if placed:
                         break
-
+        placed_list = list(placed_positions)
         return {
-            'w': list(list(placed_positions)[0]),
-            'c': list(list(placed_positions)[1]),
-            's': list(list(placed_positions)[2])
+            'w': list(placed_list[0]),
+            'c': list(placed_list[1]),
+            's': list(placed_list[2])
         }
     
+    ### 修正点 4 ###
     def predict_position_motion(self, moved):
-        """
-        相手の行動が移動であった場合の予測マップの更新を行う
-        """
-        if moved['ship'] == 'w':
+        """相手の行動が移動であった場合の予測マップの更新を行う"""
+        ship_type = moved['ship']
+        distance = moved['distance']
+
+        if ship_type == 'w':
             if self.enemy_w is not None:
-                self.enemy_w[0] += moved['distance'][0]
-                self.enemy_w[1] += moved['distance'][1]
-            # ### 修正点 ### 位置確定時も予測マップを更新する
-            self.w_pos_pred = self.update_prediction_map_motion(self.w_pos_pred, moved['distance'])
-        elif moved['ship'] == 'c':
+                self.enemy_w[0] += distance[0]
+                self.enemy_w[1] += distance[1]
+            # 常に予測マップも更新する
+            self.w_pos_pred = self.update_prediction_map_motion(self.w_pos_pred, distance)
+        elif ship_type == 'c':
             if self.enemy_c is not None:
-                self.enemy_c[0] += moved['distance'][0]
-                self.enemy_c[1] += moved['distance'][1]
-            self.c_pos_pred = self.update_prediction_map_motion(self.c_pos_pred, moved['distance'])
-        elif moved['ship'] == 's':
+                self.enemy_c[0] += distance[0]
+                self.enemy_c[1] += distance[1]
+            self.c_pos_pred = self.update_prediction_map_motion(self.c_pos_pred, distance)
+        elif ship_type == 's':
             if self.enemy_s is not None:
-                self.enemy_s[0] += moved['distance'][0]
-                self.enemy_s[1] += moved['distance'][1]
-            self.s_pos_pred = self.update_prediction_map_motion(self.s_pos_pred, moved['distance'])
+                self.enemy_s[0] += distance[0]
+                self.enemy_s[1] += distance[1]
+            self.s_pos_pred = self.update_prediction_map_motion(self.s_pos_pred, distance)
     
     def update_prediction_map_motion(self, target_map, motion):
         dx, dy = motion
-        # 新しいマップをnotExistで初期化
         new_pred_map = np.full_like(target_map, notExist)
-        # 元のマップの各セルの値を移動後の位置にコピー
         for y in range(self.field.height):
             for x in range(self.field.width):
-                # 移動元の値がnotExistでなければ移動させる
                 if target_map[x, y] != notExist:
-                    nx, ny = x + dx, y + dy
+                    nx, ny = x - dx, y - dy # 元の位置を計算
                     if 0 <= nx < self.field.width and 0 <= ny < self.field.height:
-                        new_pred_map[nx, ny] = target_map[x, y]
+                        new_pred_map[x, y] = target_map[nx, ny]
         return new_pred_map
     
+    ### 修正点 2 & 3 ###
     def predict_position_attack(self, attacked):
-        """
-        相手の行動が攻撃であった場合の予測マップの更新を行う
-        """
-        x, y = attacked['position']
+        """相手の行動が攻撃であった場合の予測マップの更新を行う（アルゴリズムに沿って全面改修）"""
+        pos = attacked['position']
+        x, y = pos
 
-        ## ### 修正点 1 ### 攻撃が当たった場合の処理を全面的に修正
+        # 攻撃が確定位置と一致していたら、その確定情報をリセット
+        if self.enemy_w == pos: self.enemy_w = None
+        if self.enemy_c == pos: self.enemy_c = None
+        if self.enemy_s == pos: self.enemy_s = None
+
+        # ヒットした場合
         if 'hit' in attacked:
             hit_ship_type = attacked['hit']
-            hit_pos = attacked['position']
-            
-            if hit_ship_type == 'w':
-                self.enemy_w = hit_pos
-                self.w_pos_pred = np.full_like(self.w_pos_pred, notExist)
-                self.w_pos_pred[hit_pos[0], hit_pos[1]] = 1
-            elif hit_ship_type == 'c':
-                self.enemy_c = hit_pos
-                self.c_pos_pred = np.full_like(self.c_pos_pred, notExist)
-                self.c_pos_pred[hit_pos[0], hit_pos[1]] = 1
-            elif hit_ship_type == 's':
-                self.enemy_s = hit_pos
-                self.s_pos_pred = np.full_like(self.s_pos_pred, notExist)
-                self.s_pos_pred[hit_pos[0], hit_pos[1]] = 1
+            if not isinstance(hit_ship_type, str): hit_ship_type = hit_ship_type[0]
 
-        ## ### 修正点 3 ### 水飛沫（ニアミス）が発生した場合の処理を修正
-        if 'near' in attacked:
-            near_ship_type = attacked['near']
             target_map = None
-            if near_ship_type == 'w': target_map = self.w_pos_pred
-            elif near_ship_type == 'c': target_map = self.c_pos_pred
-            elif near_ship_type == 's': target_map = self.s_pos_pred
-
+            if hit_ship_type == 'w':
+                self.enemy_w = pos
+                target_map = self.w_pos_pred
+            elif hit_ship_type == 'c':
+                self.enemy_c = pos
+                target_map = self.c_pos_pred
+            elif hit_ship_type == 's':
+                self.enemy_s = pos
+                target_map = self.s_pos_pred
+            
+            # ヒットした艦のマップを更新：ヒット地点を1、他をnotExistに
             if target_map is not None:
-                # 攻撃中心点は存在しない
-                target_map[x, y] = notExist
-                # 周囲8マスのスコアを加算
-                for i in (-1, 0, 1):
-                    for j in (-1, 0, 1):
-                        if i == 0 and j == 0: continue
-                        px, py = x + i, y + j
-                        if 0 <= px < self.field.width and 0 <= py < self.field.height:
-                            if target_map[px, py] != notExist:
-                                target_map[px, py] += 1  # 上書きではなく加算
+                target_map.fill(notExist)
+                target_map[x, y] = 1
 
-        ## 何も当たらなかった場合の処理
+        # ニアミスした場合
+        if 'near' in attacked:
+            near_ship_types = attacked['near']
+            for ship_type in near_ship_types:
+                target_map = None
+                if ship_type == 'w': target_map = self.w_pos_pred
+                elif ship_type == 'c': target_map = self.c_pos_pred
+                elif ship_type == 's': target_map = self.s_pos_pred
+
+                # ニアミスした艦のマップを更新：中心をnotExist、周囲8マスを1、他をnotExistに
+                if target_map is not None:
+                    target_map.fill(notExist)
+                    for i in range(-1, 2):
+                        for j in range(-1, 2):
+                            if i == 0 and j == 0: continue
+                            px, py = x + i, y + j
+                            if 0 <= px < self.field.width and 0 <= py < self.field.height:
+                                target_map[px, py] = 1
+
+        # 完全なミスだった場合
         if 'hit' not in attacked and 'near' not in attacked:
-            for i in (-1, 0, 1):
-                for j in (-1, 0, 1):
+            for i in range(-1, 2):
+                for j in range(-1, 2):
                     px, py = x + i, y + j
                     if 0 <= px < self.field.width and 0 <= py < self.field.height:
                         self.w_pos_pred[px, py] = notExist
@@ -199,100 +198,79 @@ class OriginalPlayer(Player):
                         self.s_pos_pred[px, py] = notExist
 
     def update_entire_map(self, observation):
-        """
-        全体の予測マップを更新する
-        """
-        ### 修正点 2 ### 撃沈された艦の位置確定情報をリセット
-        for ship_type, state in observation['opponent'].items():
-            if state["hp"] <= 0:
-                if ship_type == 'w': self.enemy_w = None
-                elif ship_type == 'c': self.enemy_c = None
-                elif ship_type == 's': self.enemy_s = None
-
-        self.entire_map = np.zeros((self.field.width, self.field.height))
+        """全体の予測マップを更新する"""
+        self.entire_map.fill(0) # 0でリセット
         for ship_type, state in observation['opponent'].items():
             if state["hp"] > 0:
-                if ship_type == 'w':
-                    self.entire_map += self.w_pos_pred
-                elif ship_type == 'c':
-                    self.entire_map += self.c_pos_pred
-                elif ship_type == 's':
-                    self.entire_map += self.s_pos_pred
+                if ship_type == 'w': self.entire_map += self.w_pos_pred
+                elif ship_type == 'c': self.entire_map += self.c_pos_pred
+                elif ship_type == 's': self.entire_map += self.s_pos_pred
+    
+    ### 修正点 1 ###
 
     def action(self):
-        """
-        基本的に攻撃。攻撃したい位置が全て攻撃できない座標にある場合のみ移動を行う。
-        """
-        # 優先順位に従って攻撃
+        """行動決定ロジック（エラー箇所を修正）"""
+        # 優先攻撃対象（確定位置）がいれば攻撃
         if self.enemy_w is not None and self.in_attack_range(self.enemy_w):
             return json.dumps(self.attack(self.enemy_w))
         if self.enemy_c is not None and self.in_attack_range(self.enemy_c):
             return json.dumps(self.attack(self.enemy_c))
         if self.enemy_s is not None and self.in_attack_range(self.enemy_s):
             return json.dumps(self.attack(self.enemy_s))
-        
-        # 攻撃可能な位置とその点数をリストで保持
+
+        # 予測マップに基づいて攻撃
         attackable_positions = []
         for r in range(self.field.height):
             for c in range(self.field.width):
                 pos = [c, r]
-                # ### 修正点 ### in_attack_rangeのチェックを追加
+                # 攻撃可能で、かつ存在可能性が「なし」ではないマスを候補に
                 if self.in_attack_range(pos) and self.entire_map[c, r] > notExist:
                     attackable_positions.append((pos, self.entire_map[c, r]))
-        
-        # 点数が最も高い位置を攻撃
+
         if attackable_positions:
+            # スコアが最も高い位置を攻撃（複数あればランダム）
             attackable_positions.sort(key=lambda x: x[1], reverse=True)
             best_score = attackable_positions[0][1]
             best_positions = [pos for pos, score in attackable_positions if score == best_score]
-            target_pos = self.rng.choice(best_positions)
-            return json.dumps(self.attack(target_pos))
+            return json.dumps(self.attack(self.rng.choice(best_positions)))
         else:
             # 攻撃できる位置がない場合は移動
-            # 移動可能な艦をリストアップ
-            movable_ships = [ship for ship in self.ships.values() if ship.is_movable()]
-            if not movable_ships: # 動ける艦がない場合（ありえないが念のため）
-                return json.dumps(self.attack([0,0])) # ダミー攻撃
+            # ### 修正点 ### 'is_movable'は存在しないため削除
+            movable_ships = list(self.ships.values())
+            if not movable_ships: return json.dumps(self.attack([0, 0])) # 緊急避難
 
             ship_to_move = self.rng.choice(movable_ships)
-            
-            # 移動先を探す
-            possible_moves = []
-            for r in range(self.field.height):
-                for c in range(self.field.width):
-                    to = [c, r]
-                    if ship_to_move.is_reachable(to) and self.overlap(to) is None:
-                         # 移動コスト(ターン数)が1の範囲に限定するなどの戦略も可能
-                         if abs(to[0] - ship_to_move.position[0]) + abs(to[1] - ship_to_move.position[1]) <= 2:
-                            possible_moves.append(to)
-            
-            if possible_moves:
-                to = self.rng.choice(possible_moves)
-                return json.dumps(self.move(ship_to_move.type, to))
-            else: # 移動先もない場合
-                return json.dumps(self.attack([0,0])) # ダミー攻撃
+            to = self.rng.choice(self.field.squares)
+            attempts = 0
+            while (not ship_to_move.is_reachable(to) or self.overlap(to) is not None) and attempts < 100:
+                to = self.rng.choice(self.field.squares)
+                attempts += 1
+            return json.dumps(self.move(ship_to_move.type, to))
 
-    
     def update(self, json_str, turn_info):
         super().update(json_str, turn_info)
         c = 0 if turn_info == 'your turn' else 1
         info = self.last_msg
-        if c == 0: # 自分のターン結果の時のみ予測を更新
-            if "result" in info:
-                if "moved" in info["result"]:
-                    # 相手が移動した結果はこちらには通知されないので、このパスは通らないはず
-                    pass
-                elif "attacked" in info["result"]:
-                    self.predict_position_attack(info["result"]["attacked"])
-            self.update_entire_map(info["observation"])
-        else: # 相手のターンの時
-            if "result" in info and "moved" in info["result"]:
-                 self.predict_position_motion(info["result"]["moved"])
-                 self.update_entire_map(info["observation"])
+
+        # ### 修正案（参考）###
+        # 相手の攻撃情報も利用するとより強くなる
+        # if "result" in info and "attacked" in info["result"]:
+        #    # ここで相手の攻撃情報から予測マップを更新するロジックを追加
+        #    pass
+        
+        if c == 0: # 自分のターンの結果
+            if "result" in info and "attacked" in info["result"]:
+                self.predict_position_attack(info["result"]["attacked"])
+        else: # 相手のターンの結果
+             if "result" in info and "moved" in info["result"]:
+                self.predict_position_motion(info["result"]["moved"])
+
+        # 常に最新の観測情報で全体マップを更新
+        self.update_entire_map(info["observation"])
 
         self.report(info, c)
         print()
-    
+
     def report(self, info, c):
         """行動を文章で表示する．"""
         player = "you" if c == 0 else "opponent"
@@ -316,19 +294,9 @@ if __name__ == '__main__':
         description="Original Player for Submarine Game",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
-    parser.add_argument(
-        "host",
-        help="Hostname of the server, e.g., localhost",
-    )
-    parser.add_argument(
-        "port",
-        type=int,
-        help="Port of the server, e.g., 2000",
-    )
-    parser.add_argument(
-        "--games", type=int, default=1,
-        help="number of games to play (should be consistent with server)",
-    )
+    parser.add_argument("host", help="Hostname of the server")
+    parser.add_argument("port", type=int, help="Port of the server")
+    parser.add_argument("--games", type=int, default=1, help="number of games to play")
     args = parser.parse_args()
     FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     level = logging.INFO
@@ -339,4 +307,7 @@ if __name__ == '__main__':
             main(args.host, args.port)
         except KeyboardInterrupt:
             logging.warning('Game interrupted by user')
+            break
+        except Exception as e:
+            logging.error(f"An error occurred: {e}", exc_info=True)
             break
