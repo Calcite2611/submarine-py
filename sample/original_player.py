@@ -66,7 +66,7 @@ class OriginalPlayer(Player):
         return 'original-player'
     
     def place_ship(self):
-        distance = int(min(self.field.height, self.field.width) // 2)
+        distance = 2  # 2マス以上離す
         placed_positions = set()
         ship_types = ['w', 'c', 's']
         max_attempts = 500

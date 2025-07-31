@@ -1,0 +1,120 @@
+\documentclass[a4paper,10pt]{ltjsarticle}
+\usepackage{luatexja}
+\RequirePackage{plautopatch}
+
+% --- 主要パッケージ ---
+\usepackage{graphicx}     % 画像
+\usepackage{amsmath}      % 数式
+\usepackage{color}        % 文字色
+\usepackage{url}          % URL
+\usepackage{here}         % 図表の位置固定 [H]
+\usepackage{titlesec}     % セクション見出しの書式設定
+
+% --- biblatexによる参考文献設定 (biberバックエンド) ---
+\usepackage[
+    backend=biber,
+    style=authoryear, % 引用スタイル（authoryear）
+    sorting=nyt,       % 引用順序（名前、年、タイトル）
+    natbib=true         % natbib互換コマンドを有効化
+]{biblatex}
+\addbibresource{reference.bib} % .bibファイルを指定
+
+% --- ハイパーリンク設定 ---
+\usepackage[luatex,pdfencoding=auto]{hyperref}
+\hypersetup{
+    setpagesize=false,
+    bookmarksnumbered=true,
+    bookmarksopen=true,
+    colorlinks=true,
+    linkcolor=red,   % 内部リンクの色
+    citecolor=black, % 参考文献へのリンクの色
+    urlcolor=blue    % URLの色
+}
+
+% --- 文書全体の書式設定 ---
+\titleformat*{\section}{\mcfamily\Large}
+\titleformat*{\subsection}{\mcfamily\large}
+\titleformat*{\subsubsection}{\mcfamily\normalsize}
+\pagenumbering{arabic} % ページ番号をアラビア数字に設定
+
+% --- 文書情報 ---
+\title{プログラミング演習 最終課題レポート}
+\author{08-252019 小倉直己}
+\date{\empty}
+
+\begin{document}
+
+\maketitle
+
+% --- 本文 ---
+\section{選択した課題}
+今回は、潜水艦ゲームの課題を選択した。
+
+\section{AIのアルゴリズムの説明}
+今回作成したAIは、以下のアルゴリズムに則って動作するようにした。
+
+\subsection{船の配置}
+
+味方の艦の配置は、全ての艦が以下のルールを満たすように配置される。
+\begin{itemize}
+    \item 艦は$5 \times 5$のマス目の中に配置される。
+    \item ある艦から半径2マスの正方形の範囲内に他の艦が存在しない。
+\end{itemize}
+
+この配置を実装すると、以下のプログラムのようになる。
+
+\begin{verbatim}
+def place_ship(self):
+        distance = 2  # 2マス以上離す
+        placed_positions = set()
+        ship_types = ['w', 'c', 's']
+        max_attempts = 500
+        for ship_type in ship_types:
+            placed = False
+            attempts = 0
+            while not placed and attempts < max_attempts:
+                attempts += 1
+
+                # choice a random position which is not occupied, and scattered.
+                row = self.rng.randint(0, self.field.height - 1)
+                col = self.rng.randint(0, self.field.width - 1)
+                position = [col, row]
+
+                if tuple(position) not in placed_positions:
+                    is_isolated = True
+                    for placed_pos in placed_positions:
+                        if abs(position[1] - placed_pos[1]) <= distance and abs(position[0] - placed_pos[0]) <= distance:
+                            # If the new position is too close to any placed ship, break
+                            is_isolated = False
+                            break
+                    
+                    if is_isolated:
+                        placed_positions.add(tuple(position))
+                        placed = True
+                        logging.info(f"Placed {ship_type} at {position}")
+            if not placed:
+                logging.warning(f"Failed to place {ship_type} after {max_attempts} attempts. Trying to place in a random way.")
+                for r in range(self.field.height):
+                    for c in range(self.field.width):
+                        if (c, r) not in placed_positions:
+                            placed_positions.add((c, r))
+                            logging.info(f"Placed {ship_type} at {[c, r]}")
+                            break
+                    if placed:
+                        break
+
+        return {
+            'w': list(list(placed_positions)[0]),
+            'c': list(list(placed_positions)[1]),
+            's': list(list(placed_positions)[2])
+        }
+\end{verbatim}
+
+このコードは、今回作成したoriginal\_player.pyの一部であり、OriginalPlayerクラスのplace\_shipメソッドとして実装されている。
+このプログラムでは、ランダムに艦を配置する試行を100回繰り返し、先ほど述べたルールに従って配置できなかった場合は、ルールと関係なくランダムに配置するようにしている。
+
+
+
+\printbibliography
+
+\end{document}
