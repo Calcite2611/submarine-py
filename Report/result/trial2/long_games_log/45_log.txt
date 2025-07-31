@@ -1,0 +1,388 @@
+--- Game #45 Log ---
+Result: win, Turns: 97
+--------------------
+t=1 waiting
+opponent attacked [1, 4] near ['s']
+opponent ships: w:3 c:2 s:1 
+
+t=2 your turn
+you attacked [0, 0] near []
+opponent ships: w:3 c:2 s:1 
+
+t=3 waiting
+opponent attacked [4, 4] near []
+opponent ships: w:3 c:2 s:1 
+
+t=4 your turn
+you attacked [1, 0] near []
+opponent ships: w:3 c:2 s:1 
+
+t=5 waiting
+opponent attacked [2, 2] near []
+opponent ships: w:3 c:2 s:1 
+
+t=6 your turn
+you attacked [4, 0] near []
+opponent ships: w:3 c:2 s:1 
+
+t=7 waiting
+opponent attacked [3, 4] near []
+opponent ships: w:3 c:2 s:1 
+
+t=8 your turn
+you attacked [4, 0] near []
+opponent ships: w:3 c:2 s:1 
+
+t=9 waiting
+opponent moved w by >>
+opponent ships: w:3 c:2 s:1 
+
+t=10 your turn
+you attacked [3, 0] near []
+opponent ships: w:3 c:2 s:1 
+
+t=11 waiting
+opponent attacked [3, 3] near []
+opponent ships: w:3 c:2 s:1 
+
+t=12 your turn
+you attacked [4, 0] near []
+opponent ships: w:3 c:2 s:1 
+
+t=13 waiting
+opponent moved s by >
+opponent ships: w:3 c:2 s:1 
+
+t=14 your turn
+you attacked [4, 1] near []
+opponent ships: w:3 c:2 s:1 
+
+t=15 waiting
+opponent attacked [2, 4] near []
+opponent ships: w:3 c:2 s:1 
+
+t=16 your turn
+you attacked [4, 0] near []
+opponent ships: w:3 c:2 s:1 
+
+t=17 waiting
+opponent moved c by ^
+opponent ships: w:3 c:2 s:1 
+
+t=18 your turn
+you attacked [4, 1] near ['c']
+opponent ships: w:3 c:2 s:1 
+
+t=19 waiting
+opponent moved s by vv
+opponent ships: w:3 c:2 s:1 
+
+t=20 your turn
+you attacked [3, 1] near ['c']
+opponent ships: w:3 c:2 s:1 
+
+t=21 waiting
+opponent attacked [3, 2] near []
+opponent ships: w:3 c:2 s:1 
+
+t=22 your turn
+you attacked [4, 0] near []
+opponent ships: w:3 c:2 s:1 
+
+t=23 waiting
+opponent moved w by >
+opponent ships: w:3 c:2 s:1 
+
+t=24 your turn
+you attacked [3, 0] near []
+opponent ships: w:3 c:2 s:1 
+
+t=25 waiting
+opponent moved c by vv
+opponent ships: w:3 c:2 s:1 
+
+t=26 your turn
+Moving w from [0, 0] to [3, 0]
+opponent ships: w:3 c:2 s:1 
+
+t=27 waiting
+opponent attacked [2, 3] near []
+opponent ships: w:3 c:2 s:1 
+
+t=28 your turn
+Moving c from [4, 0] to [2, 0]
+opponent ships: w:3 c:2 s:1 
+
+t=29 waiting
+opponent moved c by <<
+opponent ships: w:3 c:2 s:1 
+
+t=30 your turn
+you attacked [1, 4] hit c near ['s']
+opponent ships: w:3 c:1 s:1 
+
+t=31 waiting
+opponent moved c by ^^
+opponent ships: w:3 c:1 s:1 
+
+t=32 your turn
+you attacked [1, 2] hit c near []
+opponent ships: w:3 s:1 
+
+t=33 waiting
+opponent attacked [1, 3] near ['s']
+opponent ships: w:3 s:1 
+
+t=34 your turn
+you attacked [1, 2] near []
+opponent ships: w:3 s:1 
+
+t=35 waiting
+opponent attacked [3, 3] near []
+opponent ships: w:3 s:1 
+
+t=36 your turn
+you attacked [1, 3] near ['s']
+opponent ships: w:3 s:1 
+
+t=37 waiting
+opponent moved s by >
+opponent ships: w:3 s:1 
+
+t=38 your turn
+Moving w from [3, 0] to [4, 0]
+opponent ships: w:3 s:1 
+
+t=39 waiting
+opponent moved w by <<<<
+opponent ships: w:3 s:1 
+
+t=40 your turn
+Moving c from [2, 0] to [0, 0]
+opponent ships: w:3 s:1 
+
+t=41 waiting
+opponent moved s by ^^
+opponent ships: w:3 s:1 
+
+t=42 your turn
+you attacked [3, 1] near ['s']
+opponent ships: w:3 s:1 
+
+t=43 waiting
+opponent moved s by v
+opponent ships: w:3 s:1 
+
+t=44 your turn
+Moving c from [0, 0] to [0, 1]
+opponent ships: w:3 s:1 
+
+t=45 waiting
+opponent attacked [4, 2] near []
+opponent ships: w:3 s:1 
+
+t=46 your turn
+Moving c from [0, 1] to [4, 1]
+opponent ships: w:3 s:1 
+
+t=47 waiting
+opponent moved s by <<
+opponent ships: w:3 s:1 
+
+t=48 your turn
+you attacked [1, 3] hit s near ['w']
+opponent ships: w:3 
+
+t=49 waiting
+opponent attacked [0, 4] near ['s']
+opponent ships: w:3 
+
+t=50 your turn
+you attacked [1, 3] near ['w']
+opponent ships: w:3 
+
+t=51 waiting
+opponent attacked [0, 3] hit s near []
+opponent ships: w:3 
+
+t=52 your turn
+Moving c from [4, 1] to [4, 4]
+opponent ships: w:3 
+
+t=53 waiting
+opponent attacked [0, 4] near []
+opponent ships: w:3 
+
+t=54 your turn
+Moving w from [4, 0] to [4, 2]
+opponent ships: w:3 
+
+t=55 waiting
+opponent moved w by ^
+opponent ships: w:3 
+
+t=56 your turn
+Moving c from [4, 4] to [4, 0]
+opponent ships: w:3 
+
+t=57 waiting
+opponent attacked [0, 4] near []
+opponent ships: w:3 
+
+t=58 your turn
+Moving w from [4, 2] to [3, 2]
+opponent ships: w:3 
+
+t=59 waiting
+opponent attacked [0, 4] near []
+opponent ships: w:3 
+
+t=60 your turn
+Moving w from [3, 2] to [3, 1]
+opponent ships: w:3 
+
+t=61 waiting
+opponent moved w by ^^
+opponent ships: w:3 
+
+t=62 your turn
+Moving c from [4, 0] to [3, 0]
+opponent ships: w:3 
+
+t=63 waiting
+opponent moved w by vv
+opponent ships: w:3 
+
+t=64 your turn
+Moving w from [3, 1] to [0, 1]
+opponent ships: w:3 
+
+t=65 waiting
+opponent attacked [1, 4] near []
+opponent ships: w:3 
+
+t=66 your turn
+you attacked [0, 2] near ['w']
+opponent ships: w:3 
+
+t=67 waiting
+opponent attacked [1, 2] near ['w']
+opponent ships: w:3 
+
+t=68 your turn
+Moving c from [3, 0] to [1, 0]
+opponent ships: w:3 
+
+t=69 waiting
+opponent moved w by v
+opponent ships: w:3 
+
+t=70 your turn
+Moving w from [0, 1] to [0, 2]
+opponent ships: w:3 
+
+t=71 waiting
+opponent moved w by >>>>
+opponent ships: w:3 
+
+t=72 your turn
+Moving c from [1, 0] to [1, 4]
+opponent ships: w:3 
+
+t=73 waiting
+opponent moved w by ^
+opponent ships: w:3 
+
+t=74 your turn
+Moving c from [1, 4] to [2, 4]
+opponent ships: w:3 
+
+t=75 waiting
+opponent moved w by ^
+opponent ships: w:3 
+
+t=76 your turn
+Moving w from [0, 2] to [2, 2]
+opponent ships: w:3 
+
+t=77 waiting
+opponent attacked [3, 3] near ['w', 'c']
+opponent ships: w:3 
+
+t=78 your turn
+Moving c from [2, 4] to [1, 4]
+opponent ships: w:3 
+
+t=79 waiting
+opponent attacked [4, 3] near []
+opponent ships: w:3 
+
+t=80 your turn
+Moving c from [1, 4] to [1, 0]
+opponent ships: w:3 
+
+t=81 waiting
+opponent moved w by vv
+opponent ships: w:3 
+
+t=82 your turn
+Moving w from [2, 2] to [2, 1]
+opponent ships: w:3 
+
+t=83 waiting
+opponent moved w by <
+opponent ships: w:3 
+
+t=84 your turn
+Moving w from [2, 1] to [4, 1]
+opponent ships: w:3 
+
+t=85 waiting
+opponent attacked [4, 4] near []
+opponent ships: w:3 
+
+t=86 your turn
+Moving c from [1, 0] to [1, 4]
+opponent ships: w:3 
+
+t=87 waiting
+opponent attacked [2, 4] near ['c']
+opponent ships: w:3 
+
+t=88 your turn
+Moving w from [4, 1] to [4, 2]
+opponent ships: w:3 
+
+t=89 waiting
+opponent moved w by >
+opponent ships: w:3 
+
+t=90 your turn
+Moving w from [4, 2] to [3, 2]
+opponent ships: w:3 
+
+t=91 waiting
+opponent moved w by ^
+opponent ships: w:3 
+
+t=92 your turn
+you attacked [4, 3] hit w near []
+opponent ships: w:2 
+
+t=93 waiting
+opponent attacked [3, 4] near []
+opponent ships: w:2 
+
+t=94 your turn
+you attacked [4, 3] hit w near []
+opponent ships: w:1 
+
+t=95 waiting
+opponent moved w by <<
+opponent ships: w:1 
+
+t=96 your turn
+you attacked [2, 3] hit w near []
+opponent ships: 
+
+t=97 you win

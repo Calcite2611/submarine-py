@@ -188,7 +188,7 @@ class OriginalPlayer(Player):
         水飛沫が発生した場合の処理（merge_mapsを使用）
         """
         # 1. 今回のニアミス情報だけを持つ一時的なマップを作成
-        near_info_map = np.zeros((self.field.width, self.field.height))
+        near_info_map = np.full((self.field.width, self.field.height), notExist)
         for i in (-1, 0, 1):
             for j in (-1, 0, 1):
                 if i == 0 and j == 0: continue

@@ -1,0 +1,752 @@
+--- Game #10 Log ---
+Result: lose, Turns: 188
+--------------------
+t=1 waiting
+opponent moved w by >>
+opponent ships: w:3 c:2 s:1 
+
+t=2 your turn
+you attacked [3, 0] near ['w']
+opponent ships: w:3 c:2 s:1 
+
+t=3 waiting
+opponent moved c by ^^
+opponent ships: w:3 c:2 s:1 
+
+t=4 your turn
+you attacked [4, 0] near []
+opponent ships: w:3 c:2 s:1 
+
+t=5 waiting
+opponent moved w by >>
+opponent ships: w:3 c:2 s:1 
+
+t=6 your turn
+you attacked [4, 0] near ['w']
+opponent ships: w:3 c:2 s:1 
+
+t=7 waiting
+opponent moved w by <<
+opponent ships: w:3 c:2 s:1 
+
+t=8 your turn
+Moving w from [0, 0] to [2, 0]
+opponent ships: w:3 c:2 s:1 
+
+t=9 waiting
+opponent moved s by v
+opponent ships: w:3 c:2 s:1 
+
+t=10 your turn
+you attacked [2, 1] hit w near []
+opponent ships: w:2 c:2 s:1 
+
+t=11 waiting
+opponent attacked [4, 2] near []
+opponent ships: w:2 c:2 s:1 
+
+t=12 your turn
+you attacked [2, 1] hit w near []
+opponent ships: w:1 c:2 s:1 
+
+t=13 waiting
+opponent moved c by ^^
+opponent ships: w:1 c:2 s:1 
+
+t=14 your turn
+you attacked [2, 1] hit w near []
+opponent ships: c:2 s:1 
+
+t=15 waiting
+opponent moved s by v
+opponent ships: c:2 s:1 
+
+t=16 your turn
+you attacked [2, 1] near []
+opponent ships: c:2 s:1 
+
+t=17 waiting
+opponent moved c by vv
+opponent ships: c:2 s:1 
+
+t=18 your turn
+you attacked [0, 2] near []
+opponent ships: c:2 s:1 
+
+t=19 waiting
+opponent attacked [4, 1] near ['c']
+opponent ships: c:2 s:1 
+
+t=20 your turn
+you attacked [1, 2] near []
+opponent ships: c:2 s:1 
+
+t=21 waiting
+opponent moved s by ^^^^
+opponent ships: c:2 s:1 
+
+t=22 your turn
+Moving w from [2, 0] to [2, 2]
+opponent ships: c:2 s:1 
+
+t=23 waiting
+opponent moved c by ^
+opponent ships: c:2 s:1 
+
+t=24 your turn
+Moving s from [0, 3] to [1, 3]
+opponent ships: c:2 s:1 
+
+t=25 waiting
+opponent moved c by <
+opponent ships: c:2 s:1 
+
+t=26 your turn
+Moving w from [2, 2] to [2, 0]
+opponent ships: c:2 s:1 
+
+t=27 waiting
+opponent moved c by <
+opponent ships: c:2 s:1 
+
+t=28 your turn
+Moving s from [1, 3] to [3, 3]
+opponent ships: c:2 s:1 
+
+t=29 waiting
+opponent moved s by <<<
+opponent ships: c:2 s:1 
+
+t=30 your turn
+Moving c from [4, 0] to [3, 0]
+opponent ships: c:2 s:1 
+
+t=31 waiting
+opponent moved s by >>>>
+opponent ships: c:2 s:1 
+
+t=32 your turn
+Moving w from [2, 0] to [1, 0]
+opponent ships: c:2 s:1 
+
+t=33 waiting
+opponent moved c by vvv
+opponent ships: c:2 s:1 
+
+t=34 your turn
+Moving c from [3, 0] to [0, 0]
+opponent ships: c:2 s:1 
+
+t=35 waiting
+opponent attacked [3, 1] near []
+opponent ships: c:2 s:1 
+
+t=36 your turn
+Moving w from [1, 0] to [1, 4]
+opponent ships: c:2 s:1 
+
+t=37 waiting
+opponent moved s by <
+opponent ships: c:2 s:1 
+
+t=38 your turn
+Moving w from [1, 4] to [2, 4]
+opponent ships: c:2 s:1 
+
+t=39 waiting
+opponent attacked [2, 3] near ['w', 's']
+opponent ships: c:2 s:1 
+
+t=40 your turn
+Moving c from [0, 0] to [1, 0]
+opponent ships: c:2 s:1 
+
+t=41 waiting
+opponent attacked [3, 0] near []
+opponent ships: c:2 s:1 
+
+t=42 your turn
+Moving w from [2, 4] to [4, 4]
+opponent ships: c:2 s:1 
+
+t=43 waiting
+opponent attacked [3, 3] hit s near ['w']
+opponent ships: c:2 s:1 
+
+t=44 your turn
+Moving w from [4, 4] to [4, 2]
+opponent ships: c:2 s:1 
+
+t=45 waiting
+opponent moved c by ^^
+opponent ships: c:2 s:1 
+
+t=46 your turn
+Moving w from [4, 2] to [4, 0]
+opponent ships: c:2 s:1 
+
+t=47 waiting
+opponent attacked [2, 2] near []
+opponent ships: c:2 s:1 
+
+t=48 your turn
+Moving c from [1, 0] to [1, 4]
+opponent ships: c:2 s:1 
+
+t=49 waiting
+opponent moved c by ^
+opponent ships: c:2 s:1 
+
+t=50 your turn
+Moving w from [4, 0] to [1, 0]
+opponent ships: c:2 s:1 
+
+t=51 waiting
+opponent moved c by >>
+opponent ships: c:2 s:1 
+
+t=52 your turn
+Moving w from [1, 0] to [3, 0]
+opponent ships: c:2 s:1 
+
+t=53 waiting
+opponent moved s by vv
+opponent ships: c:2 s:1 
+
+t=54 your turn
+Moving w from [3, 0] to [3, 2]
+opponent ships: c:2 s:1 
+
+t=55 waiting
+opponent moved s by ^^
+opponent ships: c:2 s:1 
+
+t=56 your turn
+Moving w from [3, 2] to [3, 0]
+opponent ships: c:2 s:1 
+
+t=57 waiting
+opponent attacked [4, 2] near []
+opponent ships: c:2 s:1 
+
+t=58 your turn
+Moving w from [3, 0] to [3, 4]
+opponent ships: c:2 s:1 
+
+t=59 waiting
+opponent moved s by v
+opponent ships: c:2 s:1 
+
+t=60 your turn
+Moving c from [1, 4] to [1, 2]
+opponent ships: c:2 s:1 
+
+t=61 waiting
+opponent moved c by vvv
+opponent ships: c:2 s:1 
+
+t=62 your turn
+Moving c from [1, 2] to [1, 1]
+opponent ships: c:2 s:1 
+
+t=63 waiting
+opponent moved c by ^^
+opponent ships: c:2 s:1 
+
+t=64 your turn
+Moving c from [1, 1] to [2, 1]
+opponent ships: c:2 s:1 
+
+t=65 waiting
+opponent moved c by <
+opponent ships: c:2 s:1 
+
+t=66 your turn
+Moving w from [3, 4] to [3, 1]
+opponent ships: c:2 s:1 
+
+t=67 waiting
+opponent moved s by <<
+opponent ships: c:2 s:1 
+
+t=68 your turn
+Moving w from [3, 1] to [3, 3]
+opponent ships: c:2 s:1 
+
+t=69 waiting
+opponent moved c by ^^
+opponent ships: c:2 s:1 
+
+t=70 your turn
+Moving w from [3, 3] to [3, 0]
+opponent ships: c:2 s:1 
+
+t=71 waiting
+opponent attacked [2, 0] near ['w', 'c']
+opponent ships: c:2 s:1 
+
+t=72 your turn
+Moving w from [3, 0] to [4, 0]
+opponent ships: c:2 s:1 
+
+t=73 waiting
+opponent attacked [3, 0] near ['w', 'c']
+opponent ships: c:2 s:1 
+
+t=74 your turn
+Moving c from [2, 1] to [2, 3]
+opponent ships: c:2 s:1 
+
+t=75 waiting
+opponent attacked [1, 2] near ['c']
+opponent ships: c:2 s:1 
+
+t=76 your turn
+Moving w from [4, 0] to [4, 2]
+opponent ships: c:2 s:1 
+
+t=77 waiting
+opponent moved c by <
+opponent ships: c:2 s:1 
+
+t=78 your turn
+Moving w from [4, 2] to [3, 2]
+opponent ships: c:2 s:1 
+
+t=79 waiting
+opponent attacked [3, 0] near []
+opponent ships: c:2 s:1 
+
+t=80 your turn
+Moving w from [3, 2] to [3, 3]
+opponent ships: c:2 s:1 
+
+t=81 waiting
+opponent moved s by >>>
+opponent ships: c:2 s:1 
+
+t=82 your turn
+Moving c from [2, 3] to [2, 0]
+opponent ships: c:2 s:1 
+
+t=83 waiting
+opponent attacked [2, 0] hit c near []
+opponent ships: c:2 s:1 
+
+t=84 your turn
+Moving w from [3, 3] to [3, 0]
+opponent ships: c:2 s:1 
+
+t=85 waiting
+opponent moved s by v
+opponent ships: c:2 s:1 
+
+t=86 your turn
+Moving c from [2, 0] to [1, 0]
+opponent ships: c:2 s:1 
+
+t=87 waiting
+opponent attacked [3, 0] hit w near []
+opponent ships: c:2 s:1 
+
+t=88 your turn
+Moving c from [1, 0] to [1, 3]
+opponent ships: c:2 s:1 
+
+t=89 waiting
+opponent moved c by <<
+opponent ships: c:2 s:1 
+
+t=90 your turn
+Moving c from [1, 3] to [1, 1]
+opponent ships: c:2 s:1 
+
+t=91 waiting
+opponent attacked [3, 2] near []
+opponent ships: c:2 s:1 
+
+t=92 your turn
+Moving c from [1, 1] to [1, 2]
+opponent ships: c:2 s:1 
+
+t=93 waiting
+opponent moved s by <
+opponent ships: c:2 s:1 
+
+t=94 your turn
+Moving w from [3, 0] to [3, 2]
+opponent ships: c:2 s:1 
+
+t=95 waiting
+opponent moved c by vvvv
+opponent ships: c:2 s:1 
+
+t=96 your turn
+Moving c from [1, 2] to [1, 4]
+opponent ships: c:2 s:1 
+
+t=97 waiting
+opponent moved s by <<
+opponent ships: c:2 s:1 
+
+t=98 your turn
+Moving c from [1, 4] to [2, 4]
+opponent ships: c:2 s:1 
+
+t=99 waiting
+opponent attacked [2, 1] near ['w']
+opponent ships: c:2 s:1 
+
+t=100 your turn
+Moving w from [3, 2] to [2, 2]
+opponent ships: c:2 s:1 
+
+t=101 waiting
+opponent attacked [2, 2] hit w near []
+opponent ships: c:2 s:1 
+
+t=102 your turn
+Moving c from [2, 4] to [0, 4]
+opponent ships: c:2 s:1 
+
+t=103 waiting
+opponent attacked [1, 4] near ['c']
+opponent ships: c:2 s:1 
+
+t=104 your turn
+Moving w from [2, 2] to [1, 2]
+opponent ships: c:2 s:1 
+
+t=105 waiting
+opponent moved c by >>
+opponent ships: c:2 s:1 
+
+t=106 your turn
+Moving w from [1, 2] to [1, 1]
+opponent ships: c:2 s:1 
+
+t=107 waiting
+opponent attacked [2, 4] near []
+opponent ships: c:2 s:1 
+
+t=108 your turn
+Moving c from [0, 4] to [0, 1]
+opponent ships: c:2 s:1 
+
+t=109 waiting
+opponent moved s by ^^
+opponent ships: c:2 s:1 
+
+t=110 your turn
+Moving c from [0, 1] to [0, 4]
+opponent ships: c:2 s:1 
+
+t=111 waiting
+opponent moved c by ^^^^
+opponent ships: c:2 s:1 
+
+t=112 your turn
+Moving c from [0, 4] to [1, 4]
+opponent ships: c:2 s:1 
+
+t=113 waiting
+opponent attacked [0, 0] near ['w']
+opponent ships: c:2 s:1 
+
+t=114 your turn
+Moving w from [1, 1] to [3, 1]
+opponent ships: c:2 s:1 
+
+t=115 waiting
+opponent attacked [1, 1] near []
+opponent ships: c:2 s:1 
+
+t=116 your turn
+Moving w from [3, 1] to [3, 2]
+opponent ships: c:2 s:1 
+
+t=117 waiting
+opponent attacked [3, 0] near []
+opponent ships: c:2 s:1 
+
+t=118 your turn
+Moving c from [1, 4] to [1, 0]
+opponent ships: c:2 s:1 
+
+t=119 waiting
+opponent attacked [2, 0] near ['c']
+opponent ships: c:2 s:1 
+
+t=120 your turn
+Moving c from [1, 0] to [3, 0]
+opponent ships: c:2 s:1 
+
+t=121 waiting
+opponent attacked [3, 0] hit c near []
+opponent ships: c:2 s:1 
+
+t=122 your turn
+Moving w from [3, 2] to [4, 2]
+opponent ships: c:2 s:1 
+
+t=123 waiting
+opponent moved c by >>
+opponent ships: c:2 s:1 
+
+t=124 your turn
+Moving w from [4, 2] to [4, 0]
+opponent ships: c:2 s:1 
+
+t=125 waiting
+opponent attacked [2, 1] near []
+opponent ships: c:2 s:1 
+
+t=126 your turn
+Moving w from [4, 0] to [1, 0]
+opponent ships: c:2 s:1 
+
+t=127 waiting
+opponent attacked [2, 0] near ['w']
+opponent ships: c:2 s:1 
+
+t=128 your turn
+Moving w from [1, 0] to [1, 3]
+opponent ships: c:2 s:1 
+
+t=129 waiting
+opponent attacked [2, 0] near []
+opponent ships: c:2 s:1 
+
+t=130 your turn
+Moving w from [1, 3] to [2, 3]
+opponent ships: c:2 s:1 
+
+t=131 waiting
+opponent moved c by <<<<
+opponent ships: c:2 s:1 
+
+t=132 your turn
+Moving w from [2, 3] to [0, 3]
+opponent ships: c:2 s:1 
+
+t=133 waiting
+opponent attacked [0, 1] near []
+opponent ships: c:2 s:1 
+
+t=134 your turn
+Moving w from [0, 3] to [4, 3]
+opponent ships: c:2 s:1 
+
+t=135 waiting
+opponent moved c by >>>
+opponent ships: c:2 s:1 
+
+t=136 your turn
+Moving w from [4, 3] to [1, 3]
+opponent ships: c:2 s:1 
+
+t=137 waiting
+opponent attacked [0, 0] near []
+opponent ships: c:2 s:1 
+
+t=138 your turn
+Moving w from [1, 3] to [1, 4]
+opponent ships: c:2 s:1 
+
+t=139 waiting
+opponent moved c by v
+opponent ships: c:2 s:1 
+
+t=140 your turn
+Moving w from [1, 4] to [0, 4]
+opponent ships: c:2 s:1 
+
+t=141 waiting
+opponent attacked [4, 2] near []
+opponent ships: c:2 s:1 
+
+t=142 your turn
+Moving w from [0, 4] to [0, 1]
+opponent ships: c:2 s:1 
+
+t=143 waiting
+opponent attacked [1, 1] near ['w']
+opponent ships: c:2 s:1 
+
+t=144 your turn
+Moving w from [0, 1] to [4, 1]
+opponent ships: c:2 s:1 
+
+t=145 waiting
+opponent attacked [2, 2] near []
+opponent ships: c:2 s:1 
+
+t=146 your turn
+Moving w from [4, 1] to [2, 1]
+opponent ships: c:2 s:1 
+
+t=147 waiting
+opponent moved s by >>
+opponent ships: c:2 s:1 
+
+t=148 your turn
+Moving w from [2, 1] to [4, 1]
+opponent ships: c:2 s:1 
+
+t=149 waiting
+opponent moved s by vvvv
+opponent ships: c:2 s:1 
+
+t=150 your turn
+Moving w from [4, 1] to [4, 0]
+opponent ships: c:2 s:1 
+
+t=151 waiting
+opponent moved s by >
+opponent ships: c:2 s:1 
+
+t=152 your turn
+Moving w from [4, 0] to [3, 0]
+opponent ships: c:2 s:1 
+
+t=153 waiting
+opponent moved s by ^
+opponent ships: c:2 s:1 
+
+t=154 your turn
+Moving w from [3, 0] to [3, 2]
+opponent ships: c:2 s:1 
+
+t=155 waiting
+opponent attacked [3, 0] near []
+opponent ships: c:2 s:1 
+
+t=156 your turn
+Moving w from [3, 2] to [3, 3]
+opponent ships: c:2 s:1 
+
+t=157 waiting
+opponent moved c by <<
+opponent ships: c:2 s:1 
+
+t=158 your turn
+Moving w from [3, 3] to [4, 3]
+opponent ships: c:2 s:1 
+
+t=159 waiting
+opponent attacked [3, 3] near ['w']
+opponent ships: c:2 s:1 
+
+t=160 your turn
+Moving w from [4, 3] to [3, 3]
+opponent ships: c:2 s:1 
+
+t=161 waiting
+opponent attacked [0, 0] near []
+opponent ships: c:2 s:1 
+
+t=162 your turn
+Moving w from [3, 3] to [1, 3]
+opponent ships: c:2 s:1 
+
+t=163 waiting
+opponent attacked [0, 2] near ['w']
+opponent ships: c:2 s:1 
+
+t=164 your turn
+Moving w from [1, 3] to [0, 3]
+opponent ships: c:2 s:1 
+
+t=165 waiting
+opponent attacked [0, 1] near []
+opponent ships: c:2 s:1 
+
+t=166 your turn
+Moving w from [0, 3] to [0, 4]
+opponent ships: c:2 s:1 
+
+t=167 waiting
+opponent attacked [1, 0] near []
+opponent ships: c:2 s:1 
+
+t=168 your turn
+Moving w from [0, 4] to [0, 1]
+opponent ships: c:2 s:1 
+
+t=169 waiting
+opponent moved s by <<
+opponent ships: c:2 s:1 
+
+t=170 your turn
+Moving w from [0, 1] to [0, 4]
+opponent ships: c:2 s:1 
+
+t=171 waiting
+opponent moved c by v
+opponent ships: c:2 s:1 
+
+t=172 your turn
+Moving w from [0, 4] to [0, 0]
+opponent ships: c:2 s:1 
+
+t=173 waiting
+opponent attacked [3, 2] near []
+opponent ships: c:2 s:1 
+
+t=174 your turn
+Moving w from [0, 0] to [0, 2]
+opponent ships: c:2 s:1 
+
+t=175 waiting
+opponent moved c by vv
+opponent ships: c:2 s:1 
+
+t=176 your turn
+Moving w from [0, 2] to [1, 2]
+opponent ships: c:2 s:1 
+
+t=177 waiting
+opponent attacked [1, 4] near []
+opponent ships: c:2 s:1 
+
+t=178 your turn
+Moving w from [1, 2] to [1, 3]
+opponent ships: c:2 s:1 
+
+t=179 waiting
+opponent moved s by >
+opponent ships: c:2 s:1 
+
+t=180 your turn
+Moving w from [1, 3] to [4, 3]
+opponent ships: c:2 s:1 
+
+t=181 waiting
+opponent attacked [0, 3] near []
+opponent ships: c:2 s:1 
+
+t=182 your turn
+Moving w from [4, 3] to [4, 4]
+opponent ships: c:2 s:1 
+
+t=183 waiting
+opponent moved s by ^^
+opponent ships: c:2 s:1 
+
+t=184 your turn
+Moving w from [4, 4] to [3, 4]
+opponent ships: c:2 s:1 
+
+t=185 waiting
+opponent attacked [4, 2] near []
+opponent ships: c:2 s:1 
+
+t=186 your turn
+Moving w from [3, 4] to [1, 4]
+opponent ships: c:2 s:1 
+
+t=187 waiting
+opponent attacked [1, 4] hit w near []
+opponent ships: c:2 s:1 
+
+t=188 you lose
